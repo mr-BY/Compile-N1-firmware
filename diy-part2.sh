@@ -19,13 +19,16 @@ sed -i 's#luci-theme-bootstrap#luci-theme-argon#g' feeds/luci/collections/luci/M
 # Read cpufreq for aarch64
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
 
-# Add luci-theme-argon
+# Add argon主题
 rm -rf ./package/lean/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 
-# Add luci-app-amlogic
+# Add 晶晨宝盒
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+
+# Add 文件管理
+svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistant
 
 # Add po2lmo
 git clone https://github.com/openwrt-dev/po2lmo.git
@@ -36,11 +39,11 @@ popd
 # Add OpenClash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 
-# Add luci-app-jd-dailybonus
+# Add 京东签到
 rm -rf ./package/lean/luci-app-jd-dailybonus
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus
 
-# Add luci-app-dockerman
+# Add dockerman
 rm -rf ./package/lean/luci-app-docker
 rm -rf ./package/lean/luci-lib-docker
 svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman
@@ -50,11 +53,11 @@ if [ -e feeds/packages/utils/docker-ce ];then
 	sed -i 's/+docker/+docker-ce/g' package/luci-app-dockerman/Makefile
 fi
 
-# Add openwrt-passwall & luci-app-ssr-plus
+# Add passwall & ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/openwrt-passwall/luci-app-ssr-plus
 
-# Add luci-app-serverchan
+# Add 微信推送
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 
 # update && install
