@@ -40,14 +40,14 @@ popd
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 
 # Add dockerman
-rm -rf ./package/lean/luci-app-docker
-rm -rf ./package/lean/luci-lib-docker
-svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman
-svn co https://github.com/lisaac/luci-lib-docker/trunk/collections/luci-lib-docker package/luci-lib-docker
-if [ -e feeds/packages/utils/docker-ce ];then
-	sed -i '/dockerd/d' package/luci-app-dockerman/Makefile
-	sed -i 's/+docker/+docker-ce/g' package/luci-app-dockerman/Makefile
-fi
+#rm -rf ./package/lean/luci-app-docker
+#rm -rf ./package/lean/luci-lib-docker
+#svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman
+#svn co https://github.com/lisaac/luci-lib-docker/trunk/collections/luci-lib-docker package/luci-lib-docker
+#if [ -e feeds/packages/utils/docker-ce ];then
+#	sed -i '/dockerd/d' package/luci-app-dockerman/Makefile
+#	sed -i 's/+docker/+docker-ce/g' package/luci-app-dockerman/Makefile
+#fi
 
 # Add passwall & ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
