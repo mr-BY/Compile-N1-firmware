@@ -55,7 +55,7 @@ jobs:
         sudo chown $USER:$GROUPS /workdir
 
     - name: Clone source code
-      id: source code
+      id: sourcecode
       working-directory: /workdir
       run: |
         df -hT $PWD
@@ -168,7 +168,7 @@ jobs:
         echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
         touch release.txt
         echo "🖥️ [Information]<br />IP: 192.168.2.1<br />User: root&nbsp;&nbsp;&nbsp;Password: password<br />" >> release.txt
-        echo "🔎 [Change]<br />${{ steps.source code.outputs.change }}<br />" >> release.txt
+        echo "🔎 [Change]<br />${{ steps.sourcecode.outputs.change }}<br />" >> release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer]<br />${{ steps.cowtransfer.outputs.url }}" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer]<br />${{ steps.wetransfer.outputs.url }}" >> release.txt
         echo "::set-output name=status::success"
