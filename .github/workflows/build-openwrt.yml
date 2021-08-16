@@ -62,7 +62,7 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
-        echo "::set-output name=change::$(git show -s --date=short --format="Date: %cd<br/>Commit: %s<br/><br/>")"
+        echo "::set-output name=change::$(git show -s --date=short --format="Date: %cd<br />Commit: %s")"
 
     - name: Load custom feeds
       run: |
@@ -167,10 +167,10 @@ jobs:
       run: |
         echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
         touch release.txt
-        echo "🖥️ [Information]<br/>IP: 192.168.2.1<br/>User: root  Password: password<br/><br/>" >> release.txt
-        echo "🔎 [Change] (${{ steps.source code.outputs.change }})" >> release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer] (${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer] (${{ steps.wetransfer.outputs.url }})" >> release.txt
+        echo "🖥️ [Information]<br />IP: 192.168.2.1<br />User: root&nbsp;&nbsp;&nbsp;Password: password<br />" >> release.txt
+        echo "🔎 [Change]<br />${{ steps.source code.outputs.change }}<br />" >> release.txt
+        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer]<br />${{ steps.cowtransfer.outputs.url }}" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer]<br />${{ steps.wetransfer.outputs.url }}" >> release.txt
         echo "::set-output name=status::success"
 
     - name: Upload firmware to release
