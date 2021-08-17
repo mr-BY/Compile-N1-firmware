@@ -16,6 +16,9 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 # Replace the default theme
 sed -i 's#luci-theme-bootstrap#luci-theme-argon#g' feeds/luci/collections/luci/Makefile
 
+# Enable ttyd auto login
+sed -i "s/\/bin\/login/\/usr\/libexec\/login.sh/g" feeds/packages/utils/ttyd/files/ttyd.config
+
 # Read cpufreq for aarch64
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
 
